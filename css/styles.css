@@ -36,33 +36,34 @@ body {
 
 .content > * {
   flex-basis: 50%;
-
   background-color: white;
   margin: 25px;
 }
 .controls > * {
   display: flex;
-
   justify-content: center;
   margin-top: 25px;
 }
-.switch {
-}
-.feed {
-  padding: 0;
 
+.feed {
+  padding: 20px;
   overflow-y: auto;
 
   list-style-type: none;
 }
 
-.pages {
-}
-
-.feed > li {
-}
-
 .form-check {
   margin: 5px;
   color: black;
+}
+
+.amount > * {
+  padding: 0 5px;
+}
+.rate > * {
+  padding: 0 5px;
+}
+
+.run > * {
+  margin-right: 25px;
 }

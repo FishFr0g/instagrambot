@@ -21,6 +21,40 @@
 
     <div class="content">
       <div class="controls">
+        <div class="amount">
+          <div class="col-sm-2">
+            <label for="minLike">Min Likes</label>
+            <input type="text" class="form-control" id="minLike" placeholder="100" />
+          </div>
+          <div class="col-sm-2">
+            <label for="maxLike">Max Likes</label>
+            <input type="text" class="form-control" id="maxLike" placeholder="250" />
+          </div>
+          <div class="col-sm-2">
+            <label for="minFollow">Min Follows</label>
+            <input type="text" class="form-control" id="minFollow" placeholder="100" />
+          </div>
+          <div class="col-sm-2">
+            <label for="maxFollow">Max Follows</label>
+            <input type="text" class="form-control" id="maxFollow" placeholder="250" />
+          </div>
+        </div>
+
+        <div class="rate">
+          <div class="col-sm-2">
+            <label for="likeRate">Like Rate</label>
+            <input type="text" class="form-control" id="likeRate" placeholder="15" />
+          </div>
+          <div class="col-sm-2">
+            <label for="followRate">Follow Rate</label>
+            <input type="text" class="form-control" id="followRate" placeholder="15" />
+          </div>
+          <div class="col-sm-2">
+            <label for="cooldown">Cooldown</label>
+            <input type="text" class="form-control" id="cooldown" placeholder="25 (Minutes)" />
+          </div>
+        </div>
+
         <div class="switch">
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked />
@@ -38,276 +72,30 @@
         <div class="pages">
           <div class="col-sm-10">
             <label for="pagesInput">Pages</label>
-            <input type="text" class="form-control" id="pagesInput" placeholder="ExamplePage, ExamplePage2, ExamplePage3" />
+            <input type="text" class="form-control" id="pagesInput" placeholder="Page, Page2, Page3" />
           </div>
+        </div>
+
+        <div class="hashtags">
+          <div class="col-sm-10">
+            <label for="hashtagsInput">Hashtags</label>
+            <input type="text" class="form-control" id="hashtagsInput" placeholder="Hashtag, Hashtag2, Hashtag3" />
+          </div>
+        </div>
+
+        <div class="comments">
+          <div class="col-sm-10">
+            <label for="hashtagsInput">Comments</label>
+            <input type="text" class="form-control" id="hashtagsInput" placeholder="Comment, Comment2, Comment3" />
+          </div>
+        </div>
+        <div class="run">
+          <button type="button" class="btn btn-success btn-lg">Start</button>
+          <button type="button" class="btn btn-danger btn-lg">Stop</button>
         </div>
       </div>
 
       <ul class="feed">
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
         <li>Article 1</li>
         <li>Article 2</li>
         <li>Article 3</li>
