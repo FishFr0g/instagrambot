@@ -2,6 +2,8 @@ const { app, BrowserWindow } = require("electron");
 const { ipcMain } = require("electron");
 const path = require("path");
 
+const puppeteer = require("puppeteer");
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
@@ -33,6 +35,17 @@ app.on("window-all-closed", () => {
   }
 });
 
-ipcMain.on("yo", function () {
-  console.log("yo");
+let browser;
+ipcMain.on("start", async function () {
+  if (browser) return;
+  browser = await puppeteer.launch({ executablePath: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", headless: false });
+  const page = await browser.newPage();
+  await page.goto("https://google.com");
+});
+ipcMain.on("stop", async function () {
+  if (browser) {
+    await browser.close();
+
+    browser = null;
+  }
 });

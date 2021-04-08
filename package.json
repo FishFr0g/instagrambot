@@ -11,7 +11,8 @@
   "author": "Buckets",
   "license": "ISC",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "puppeteer": "^8.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
