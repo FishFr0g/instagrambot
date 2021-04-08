@@ -1,1 +1,3 @@
 /coinmarketcap/
+out/
+node_modules
