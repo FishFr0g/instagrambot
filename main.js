@@ -34,7 +34,6 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
-
 let browser;
 ipcMain.on("start", async function () {
   if (browser) return;
@@ -42,6 +41,7 @@ ipcMain.on("start", async function () {
   const page = await browser.newPage();
   await page.goto("https://google.com");
 });
+
 ipcMain.on("stop", async function () {
   if (browser) {
     await browser.close();
