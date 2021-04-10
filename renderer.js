@@ -16,7 +16,6 @@ stopBtn.addEventListener("click", function () {
 closeBtn.addEventListener("click", function () {
   remote.getCurrentWindow().close();
 });
-
 function getPath() {
   var x = document.getElementById("myFile").files[0].path;
   console.log(x);
