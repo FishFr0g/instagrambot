@@ -6,19 +6,23 @@ const puppeteer = require("puppeteer");
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 900,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      enableRemoteModule: true,
     },
+    minWidth: 1280,
+    minHeight: 900,
+
+    frame: false,
   });
 
   win.loadFile("index.html");
 
   win.webContents.openDevTools();
 }
-
 app.whenReady().then(() => {
   createWindow();
 
@@ -49,3 +53,5 @@ ipcMain.on("stop", async function () {
     browser = null;
   }
 });
+
+//Make html responsive, also add a choose file path for google chrome to work, add to see if theyre logged in to instagram, start reading and updating config json file

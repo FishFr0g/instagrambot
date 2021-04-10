@@ -8,7 +8,7 @@ body {
 .bar {
   display: flex;
   width: 100%;
-  background: #eee;
+  background-color: royalblue;
   height: 75px;
 }
 .title {
@@ -18,9 +18,11 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Roboto";
-  background-color: royalblue;
+
   text-align: center;
   font-size: 25px;
+
+  -webkit-app-region: drag;
 }
 .content {
   display: flex;
@@ -61,5 +63,23 @@ body {
 }
 
 .run > * {
-  margin-right: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 1275px) {
+  .content {
+    flex-flow: column;
+  }
+  .content > * {
+    margin: 5px;
+  }
+  .controls > * {
+    margin-bottom: 25px;
+  }
+}
+
+@media only screen and (max-height: 900px) {
+  body {
+  }
 }

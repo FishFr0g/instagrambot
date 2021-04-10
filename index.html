@@ -16,6 +16,8 @@
   <body>
     <div class="bar">
       <div class="title">Instabot</div>
+
+      <button type="button" class="btn-close" aria-label="Close" id="closeBtn"></button>
     </div>
 
     <div class="content">
@@ -50,7 +52,7 @@
           </div>
           <div class="col-sm-2">
             <label for="cooldown">Cooldown</label>
-            <input type="text" class="form-control" id="cooldown" placeholder="25 (Minutes)" />
+            <input type="text" class="form-control" id="cooldown" placeholder="25" />
           </div>
         </div>
 
@@ -88,6 +90,8 @@
             <input type="text" class="form-control" id="hashtagsInput" placeholder="Comment, Comment2, Comment3" />
           </div>
         </div>
+        <div class="path"><input type="file" id="fileBtn" /></div>
+        <div class="save"><button type="button" id="saveBtn" class="btn btn-primary btn-sm">Save Config</button></div>
         <div class="run">
           <button type="button" id="startBtn" class="btn btn-success btn-lg">Start</button>
           <button type="button" id="stopBtn" class="btn btn-danger btn-lg">Stop</button>
