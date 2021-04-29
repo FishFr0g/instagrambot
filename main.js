@@ -74,23 +74,80 @@ ipcMain.on("stop", async function () {
 });
 
 ipcMain.on("saveConfig", async function (err, data) {
+  let check = checkConfig(data);
+
+  if (!check) return;
   fs.writeFile("./config.json", JSON.stringify(data), async (err) => {
     if (err) {
       await msgToFeed("Could not save config!");
     } else {
-      await msgToFeed("Config saved.");
+      await msgToFeed("Config saved.", "green");
     }
   });
 });
 
 //Make html responsive, also add a choose file path for google chrome to work, add to see if theyre logged in to instagram, start reading and updating config json file
-
-async function msgToFeed(msg) {
-  await webContents.send("msgToFeed", msg);
+async function msgToFeed(msg, color) {
+  await webContents.send("msgToFeed", { msg: msg, color: color ? color : "black" });
 }
-
 function loadConfig() {
   webContents.once("dom-ready", async () => {
     webContents.send("loadConfig", config);
   });
+}
+
+function checkConfig(config) {
+  if (isNaN(config.minLikes)) {
+    msgToFeed("Min Likes must be a number.", "red");
+    return false;
+  }
+  if (isNaN(config.maxLikes)) {
+    msgToFeed("Max Likes must be a number.", "red");
+    return false;
+  }
+
+  if (isNaN(config.minFollows)) {
+    msgToFeed("Min Follows must be a number.", "red");
+    return false;
+  }
+  if (isNaN(config.maxFollows)) {
+    msgToFeed("Max Follows must be a number.", "red");
+    return false;
+  }
+  if (isNaN(config.likeRate)) {
+    msgToFeed("Like Rate must be a number.", "red");
+    return false;
+  }
+  if (isNaN(config.followRate)) {
+    msgToFeed("Follow Rate must be a number.", "red");
+
+    return false;
+  }
+
+  if (isNaN(config.cooldown)) {
+    msgToFeed("Cooldown must be a number", "red");
+
+    return false;
+  }
+
+  let pages = config.pages.split(",");
+
+  if (pages.length > 20) {
+    msgToFeed("Max pages: 20", "red");
+    return false;
+  }
+
+  let hashtags = config.hashtags.split(",");
+  if (hashtags.length > 20) {
+    msgToFeed("Max hashtags: 20", "red");
+    return false;
+  }
+
+  let comments = config.comments.split(",");
+
+  if (comments.length > 20) {
+    msgToFeed("Max comments: 20", "red");
+    return false;
+  }
+  return true;
 }

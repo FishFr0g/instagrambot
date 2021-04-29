@@ -67,6 +67,14 @@ body {
   margin-right: 5px;
 }
 
+.path {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  justify-content: center;
+}
+
 @media only screen and (max-width: 1275px) {
   .content {
     flex-flow: column;

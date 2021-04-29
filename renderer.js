@@ -4,17 +4,20 @@ let startBtn = document.getElementById("startBtn");
 let stopBtn = document.getElementById("stopBtn");
 let closeBtn = document.getElementById("closeBtn");
 let saveConfigBtn = document.getElementById("saveConfigBtn");
+let pathBtn = document.getElementById("path");
 startBtn.addEventListener("click", function () {
   console.log("yo");
   ipcRenderer.send("start", {});
 });
-
 stopBtn.addEventListener("click", function () {
   console.log("yo");
   ipcRenderer.send("stop", {});
 });
 closeBtn.addEventListener("click", function () {
   remote.getCurrentWindow().close();
+});
+pathBtn.addEventListener("change", function () {
+  document.getElementById("showPath").innerHTML = `Path Saved: ${document.getElementById("path").files[0].path}`;
 });
 
 saveConfigBtn.addEventListener("click", function () {
@@ -33,7 +36,11 @@ saveConfigBtn.addEventListener("click", function () {
     pages: document.getElementById("pages").value,
     hashtags: document.getElementById("hashtags").value,
     comments: document.getElementById("comments").value,
+
+    path: document.getElementById("path").files[0].path,
   };
+
+  console.log(document.getElementById("path").files[0].path);
 
   ipcRenderer.send("saveConfig", config);
 });
@@ -48,8 +55,8 @@ ipcRenderer.on("msgToFeed", function (err, data) {
   let feed = document.getElementsByClassName("feed")[0];
 
   let text = document.createElement("li");
-  text.innerHTML = data;
-
+  text.innerHTML = data.msg;
+  text.style.color = data.color;
   feed.appendChild(text);
 });
 
@@ -59,5 +66,7 @@ ipcRenderer.on("loadConfig", function (err, data) {
     if (document.getElementById(key).type == "checkbox") document.getElementById(key).checked = data[key];
     if (document.getElementById(key).type == "text") document.getElementById(key).value = data[key];
   }
+
+  if (data.path.length > 0) document.getElementById("showPath").innerHTML = `Path Saved: ${data.path}`;
   console.log(data);
 });
