@@ -25,19 +25,19 @@
         <div class="amount">
           <div class="col-sm-2">
             <label for="minLike">Min Likes</label>
-            <input type="text" class="form-control" id="minLike" placeholder="100" />
+            <input type="text" class="form-control" id="minLikes" placeholder="100" />
           </div>
           <div class="col-sm-2">
             <label for="maxLike">Max Likes</label>
-            <input type="text" class="form-control" id="maxLike" placeholder="250" />
+            <input type="text" class="form-control" id="maxLikes" placeholder="250" />
           </div>
           <div class="col-sm-2">
             <label for="minFollow">Min Follows</label>
-            <input type="text" class="form-control" id="minFollow" placeholder="100" />
+            <input type="text" class="form-control" id="minFollows" placeholder="100" />
           </div>
           <div class="col-sm-2">
             <label for="maxFollow">Max Follows</label>
-            <input type="text" class="form-control" id="maxFollow" placeholder="250" />
+            <input type="text" class="form-control" id="maxFollows" placeholder="250" />
           </div>
         </div>
 
@@ -58,56 +58,47 @@
 
         <div class="switch">
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked />
-            <label class="form-check-label" for="flexSwitchCheckDefault">Like</label>
+            <input class="form-check-input" type="checkbox" id="likeToggle" checked />
+            <label class="form-check-label">Like</label>
           </div>
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
-            <label class="form-check-label" for="flexSwitchCheckChecked">Follow</label>
+            <input class="form-check-input" type="checkbox" id="followToggle" checked />
+            <label class="form-check-label">Follow</label>
           </div>
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" checked />
-            <label class="form-check-label" for="flexSwitchCheckDisabled">Comment</label>
+            <input class="form-check-input" type="checkbox" id="commentToggle" checked />
+            <label class="form-check-label">Comment</label>
           </div>
         </div>
         <div class="pages">
           <div class="col-sm-10">
             <label for="pagesInput">Pages</label>
-            <input type="text" class="form-control" id="pagesInput" placeholder="Page, Page2, Page3" />
+            <input type="text" class="form-control" id="pages" placeholder="Page, Page2, Page3" />
           </div>
         </div>
 
         <div class="hashtags">
           <div class="col-sm-10">
             <label for="hashtagsInput">Hashtags</label>
-            <input type="text" class="form-control" id="hashtagsInput" placeholder="Hashtag, Hashtag2, Hashtag3" />
+            <input type="text" class="form-control" id="hashtags" placeholder="Hashtag, Hashtag2, Hashtag3" />
           </div>
         </div>
 
         <div class="comments">
           <div class="col-sm-10">
             <label for="hashtagsInput">Comments</label>
-            <input type="text" class="form-control" id="hashtagsInput" placeholder="Comment, Comment2, Comment3" />
+            <input type="text" class="form-control" id="comments" placeholder="Comment, Comment2, Comment3" />
           </div>
         </div>
         <div class="path"><input type="file" id="fileBtn" /></div>
-        <div class="save"><button type="button" id="saveBtn" class="btn btn-primary btn-sm">Save Config</button></div>
+        <div class="save"><button type="button" id="saveConfigBtn" class="btn btn-primary btn-sm">Save Config</button></div>
         <div class="run">
           <button type="button" id="startBtn" class="btn btn-success btn-lg">Start</button>
           <button type="button" id="stopBtn" class="btn btn-danger btn-lg">Stop</button>
         </div>
       </div>
 
-      <ul class="feed">
-        <li>Article 1</li>
-        <li>Article 2</li>
-        <li>Article 3</li>
-        <li>Article 4</li>
-        <li>Article 5</li>
-        <li>Article 6</li>
-        <li>Article 7</li>
-        <li>Article 8</li>
-      </ul>
+      <ul class="feed"></ul>
     </div>
   </body>
   <script src="renderer.js"></script>

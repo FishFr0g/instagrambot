@@ -1,3 +1,4 @@
 /coinmarketcap/
 out/
 node_modules
+/browserProfile/
