@@ -57,7 +57,7 @@ ipcMain.on("start", async function () {
   });
 
   await msgToFeed("Navigated to instagram");
-  console.log("checking");
+
   await login(page);
 });
 
