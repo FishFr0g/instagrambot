@@ -36,11 +36,12 @@ saveConfigBtn.addEventListener("click", function () {
     pages: document.getElementById("pages").value,
     hashtags: document.getElementById("hashtags").value,
     comments: document.getElementById("comments").value,
-
-    path: document.getElementById("path").files[0].path,
+    username: document.getElementById("username").value,
+    password: document.getElementById("password").value,
+    path: document.getElementById("path").files[0]
+      ? document.getElementById("path").files[0].path
+      : document.getElementById("showPath").innerHTML,
   };
-
-  console.log(document.getElementById("path").files[0].path);
 
   ipcRenderer.send("saveConfig", config);
 });
@@ -65,6 +66,7 @@ ipcRenderer.on("loadConfig", function (err, data) {
     console.log(key);
     if (document.getElementById(key).type == "checkbox") document.getElementById(key).checked = data[key];
     if (document.getElementById(key).type == "text") document.getElementById(key).value = data[key];
+    if (document.getElementById(key).type == "password") document.getElementById(key).value = data[key];
   }
 
   if (data.path.length > 0) document.getElementById("showPath").innerHTML = `Path Saved: ${data.path}`;

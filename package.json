@@ -11,6 +11,7 @@
   "author": "Buckets",
   "license": "ISC",
   "dependencies": {
+    "electron-prompt": "^1.6.2",
     "electron-squirrel-startup": "^1.0.0",
     "puppeteer": "^8.0.0"
   },

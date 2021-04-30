@@ -3,19 +3,20 @@ const { ipcMain } = require("electron");
 const path = require("path");
 const puppeteer = require("puppeteer");
 const config = require("./config.json");
+const prompt = require("electron-prompt");
 let webContents;
 const fs = require("fs");
 function createWindow() {
   const win = new BrowserWindow({
     width: 1280,
-    height: 900,
+    height: 960,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
     },
     minWidth: 1280,
-    minHeight: 900,
+    minHeight: 960,
 
     frame: false,
   });
@@ -43,9 +44,10 @@ app.on("window-all-closed", () => {
 
 let browser;
 ipcMain.on("start", async function () {
-  if (browser) return;
+  if (browser) return msgToFeed("Bot is already running.", "red");
+
   browser = await puppeteer.launch({
-    executablePath: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    executablePath: config.path,
     headless: false,
     userDataDir: "./browserProfile",
   });
@@ -53,24 +55,83 @@ ipcMain.on("start", async function () {
   await page.goto("https://instagram.com", {
     waitUntil: "networkidle2",
   });
+
   await msgToFeed("Navigated to instagram");
-  let checkLogin = await checkLogin(page);
-  if (!checkLogin) return;
+  console.log("checking");
+  await login(page);
 });
 
-async function checkLogin(page) {
-  let login = await page.$x('//*[contains(text(), "Sign up")]');
-  if (login) {
+async function checkLogin(page) {}
+
+async function login(page) {
+  try {
+    await page.waitForXPath('//*[contains(text(), "Sign up")]', { timeout: 8000 });
+    let loginInput = await page.$x('//input[@name="username"]');
+    let passwordInput = await page.$x('//input[@name="password"]');
+    let loginButton = await page.$x('//button//div[text() = "Log In"]');
+    if (loginInput.length <= 0 || passwordInput.length <= 0 || loginButton <= 0) {
+      await msgToFeed("There was an error finding the login page", "red");
+      return;
+    }
+
+    await msgToFeed("Typing username..");
+    await loginInput[0].type(config.username, { delay: 250 });
+    await msgToFeed("Typing password...");
+    await passwordInput[0].type(config.password, { delay: 250 });
+    await loginButton[0].click();
+    await msgToFeed("Logging in...");
+
+    await checkForCode(page);
+  } catch {
+    await msgToFeed("Already logged in.", "green");
+    return;
   }
-  return false;
-  return true;
 }
-ipcMain.on("stop", async function () {
+
+async function closeBrowser() {
   if (browser) {
     await browser.close();
-
     browser = null;
+    await msgToFeed("Browser closed.", "red");
   }
+}
+async function checkForCode(page) {
+  try {
+    await page.waitForXPath('//input[@aria-label = "Security Code"]', { timeout: 8000 });
+    await msgToFeed("Waiting for security code..");
+
+    let code = await prompt({
+      title: "Instagram SMS Code",
+      label: "Enter the code to continue",
+      value: "",
+      inputAttrs: {
+        type: "text",
+      },
+      type: "input",
+      alwaysOnTop: true,
+    });
+
+    if (!code) {
+      await msgToFeed("Invalid Code", "red");
+      await closeBrowser();
+      return;
+    }
+    console.log(code);
+    let securityCodeInput = await page.$x('//input[@aria-label = "Security Code"]');
+
+    await securityCodeInput[0].type(code, { delay: 250 });
+
+    let confirmButton = page.$x('//button[text() = "Confirm"]');
+
+    confirmButton[0].click();
+  } catch (err) {
+    await msgToFeed("Security code not required.");
+    return;
+  }
+}
+
+ipcMain.on("stop", async function () {
+  await closeBrowser();
 });
 
 ipcMain.on("saveConfig", async function (err, data) {
@@ -86,7 +147,7 @@ ipcMain.on("saveConfig", async function (err, data) {
   });
 });
 
-//Make html responsive, also add a choose file path for google chrome to work, add to see if theyre logged in to instagram, start reading and updating config json file
+//Check if path works, check if logged in to instagram, if not then tell them to log in, add extra config save checks, navigate to hashtags/pages
 async function msgToFeed(msg, color) {
   await webContents.send("msgToFeed", { msg: msg, color: color ? color : "black" });
 }
